@@ -15,7 +15,7 @@ def benflaw(data):
     first_digits = [int(str(abs(num))[0]) for num in data if num != 0]
 
     # Calculate the observed frequency of each digit
-    digit_count = pd.Series(list(data)).value_counts(sort=False)
+    digit_count = pd.Series(list(first_digits)).value_counts(sort=False)
     observed_freq = np.array(digit_count.values)
 
     # Calculate the expected frequency of each digit based on Benford's Law

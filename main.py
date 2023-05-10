@@ -2,6 +2,7 @@ import numpy as np
 import math
 import pandas as pd
 from scipy.stats import chi2
+import matplotlib.pyplot as plt
 
 # Read the Excel file
 df = pd.read_excel('file.xlsx')
@@ -29,6 +30,11 @@ def benflaw(data):
     chi_squared_stat = np.sum((observed_freq - expected_freq) ** 2 / expected_freq)
     degrees_of_freedom = len(observed_freq) - 1
     p_value = 1 - chi2.cdf(chi_squared_stat, degrees_of_freedom)
+
+    plt.plot(observed_freq, label="Observed")
+    plt.plot(expected_freq, label="Expected")
+    plt.legend()
+    plt.show()
 
     alpha = 0.05
     if p_value < alpha:
